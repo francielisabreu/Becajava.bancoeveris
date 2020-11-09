@@ -126,9 +126,7 @@ public class ContaService {
 		return response;
 	}
 
-	// -----------------------------------------------------------------------------------
 
-	// SALDO
 	public Conta Saldo(String hash) {
 
 		Conta response = new Conta();
