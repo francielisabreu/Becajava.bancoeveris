@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import br.bancoeveris.app.service.ContaService;
 import br.bancoeveris.app.model.BaseResponse;
+import br.bancoeveris.app.model.Conta;
 import br.bancoeveris.app.spec.ContaSpec;
 import br.bancoeveris.app.spec.ContaList;
 
@@ -11,15 +12,12 @@ import br.bancoeveris.app.spec.ContaList;
 @RequestMapping("/contas")
 public class ContaController extends BaseController {
 
-	// PROPRIEDADES
 	private final ContaService _service;
 
-	// CONSTRUTOR
 	public ContaController(ContaService service) {
 		_service = service;
 	}
-
-	// POST - CRIAR
+	// criar conta
 	@PostMapping
 	public ResponseEntity inserir(@RequestBody ContaSpec contaSpec) {
 		try {
@@ -30,12 +28,12 @@ public class ContaController extends BaseController {
 		}
 	}
 
-	// GET - OBTER POR UM HASH
+	// pegar pela hash identificadora
 	@GetMapping(path = "/{hash}")
 	public ResponseEntity listar(@PathVariable String hash) {
 		try {
-			ContaList contas = _service.listar(hash);
-			return ResponseEntity.status(contas.StatusCode).body(contas);
+			Conta conta = _service.obterByHash(hash);
+			return ResponseEntity.status(conta.StatusCode).body(conta);
 		} catch (Exception e) {
 			return ResponseEntity.status(errorBase.StatusCode).body(errorBase);
 		}

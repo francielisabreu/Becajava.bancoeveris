@@ -1,39 +1,33 @@
 package br.bancoeveris.app.spec;
 
-import br.bancoeveris.app.model.Conta;
-
 public class OperacaoSpec {
 
 	private Double valor;
 	private String tipo;
-	private Conta contaOrigem;
-	private Conta contaDestino;
+	private String hash;
+
 	public Double getValor() {
 		return valor;
 	}
+
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
+
 	public String getTipo() {
 		return tipo;
 	}
+
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	public Conta getContaOrigem() {
-		return contaOrigem;
+
+	public String getHash() {
+		return hash;
 	}
-	public void setContaOrigem(Conta contaOrigem) {
-		this.contaOrigem = contaOrigem;
+
+	public void setHash(String hash) {
+		this.hash = hash;
 	}
-	public Conta getContaDestino() {
-		return contaDestino;
-	}
-	public void setContaDestino(Conta contaDestino) {
-		this.contaDestino = contaDestino;
-	}
-	
-	
-	
+
 }
-	

@@ -21,7 +21,7 @@ public class ContaService {
 		_operacaoService = operacaoService;
 	}
 
-	// POST - CRIAR
+	// criação de conta denominando a hash de cada cliente
 	public BaseResponse inserir(ContaSpec contaSpec) {
 		Conta conta = new Conta();
 		BaseResponse base = new BaseResponse();
@@ -46,11 +46,11 @@ public class ContaService {
 		return base;
 	}
 
-	// GET - OBTER POR UM POR HASH
-	public ContaList listar(String hash) {
+	// obter uma conta especifica por hash
+	public Conta obterByHash(String hash) {
 		List<Conta> lista = _repository.findByHash(hash);
 
-		ContaList response = new ContaList();
+		Conta response = new Conta();
 
 		if (lista.isEmpty()) { // checa se lista é vazia
 			response.StatusCode = 400;
@@ -58,13 +58,13 @@ public class ContaService {
 			return response;
 		}
 
-		response.setContas(lista);
+		response = lista.get(0);
 		response.StatusCode = 200;
 		response.Message = "Hash obtido com sucesso.";
 		return response;
 	}
 
-	// GET - OBTER TUDO
+	// listar todos as contas
 	public ContaList listar() {
 
 		List<Conta> lista = _repository.findAll();
@@ -77,7 +77,7 @@ public class ContaService {
 		return response;
 	}
 
-	// PUT - ATUALIZAR POR HASH
+	// atualizar conta por hash especifica
 	public BaseResponse atualizar(String hash, ContaSpec contaSpec) {
 
 		BaseResponse response = new BaseResponse();
@@ -107,7 +107,7 @@ public class ContaService {
 
 	}
 
-	// DELETE - DELETAR POR HASH
+	// excluir conta por hash especifica
 	public BaseResponse deletar(String hash) {
 		BaseResponse response = new BaseResponse();
 
@@ -126,7 +126,7 @@ public class ContaService {
 		return response;
 	}
 
-
+	// SALDO
 	public Conta Saldo(String hash) {
 
 		Conta response = new Conta();

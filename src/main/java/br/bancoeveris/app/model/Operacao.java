@@ -64,8 +64,4 @@ public class Operacao extends BaseResponse {
 		this.contaDestino = contaDestino;
 	}
 
-	
-	
-	
-
 }
