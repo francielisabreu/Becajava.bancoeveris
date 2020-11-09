@@ -1,50 +1,50 @@
 package br.bancoeveris.app.model;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 @Entity
-public class Conta {
-
+public class Conta extends BaseResponse {
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Id;
-	private String Hash;
-	private String Nome;
-	private double Saldo = 0;
-
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@Column(unique = true)
+	private String hash;
+	private String nome;
+	
+	@Transient
+	private double saldo;
+	
 	public Long getId() {
-		return Id;
+		return id;
 	}
-
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
-
 	public String getHash() {
-		return Hash;
+		return hash;
 	}
-
 	public void setHash(String hash) {
-		Hash = hash;
+		this.hash = hash;
 	}
-
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
-
 	public void setNome(String nome) {
-		Nome = nome;
+		this.nome = nome;
 	}
-
 	public double getSaldo() {
-		return Saldo;
+		return saldo;
 	}
-
 	public void setSaldo(double saldo) {
-		Saldo = saldo;
+		this.saldo = saldo;
 	}
-
+	
+	
 }

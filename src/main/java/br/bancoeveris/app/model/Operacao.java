@@ -5,61 +5,67 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 @Entity
-public class Operacao {
-	
+public class Operacao extends BaseResponse {
 	@Id
-	private Long Id;
-	private String Tipo;
-	private double Valor;
-	
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String tipo;
+	private Double valor;
+
 	@ManyToOne
-    @JoinColumn (name ="IdContaOrigem")
-    private Conta ContaO;
-	
+	@JoinColumn(name = "ContaOrigemId")
+	private Conta contaOrigem;
+
 	@ManyToOne
-    @JoinColumn (name ="IdContaDestino")
-    private Conta ContaD;
+	@JoinColumn(name = "ContaDestinoId")
+	private Conta contaDestino;
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getTipo() {
-		return Tipo;
+		return tipo;
 	}
 
 	public void setTipo(String tipo) {
-		Tipo = tipo;
+		this.tipo = tipo;
 	}
 
-	public double getValor() {
-		return Valor;
+	public Double getValor() {
+		return valor;
 	}
 
-	public void setValor(double valor) {
-		Valor = valor;
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 
-	public Conta getContaO() {
-		return ContaO;
+	public Conta getContaOrigem() {
+		return contaOrigem;
 	}
 
-	public void setContaO(Conta contaO) {
-		ContaO = contaO;
+	public void setContaOrigem(Conta contaOrigem) {
+		this.contaOrigem = contaOrigem;
 	}
 
-	public Conta getContaD() {
-		return ContaD;
+	public Conta getContaDestino() {
+		return contaDestino;
 	}
 
-	public void setContaD(Conta contaD) {
-		ContaD = contaD;
+	public void setContaDestino(Conta contaDestino) {
+		this.contaDestino = contaDestino;
 	}
+
 	
+	
+	
+
 }

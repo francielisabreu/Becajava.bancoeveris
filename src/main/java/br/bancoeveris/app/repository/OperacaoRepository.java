@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import br.bancoeveris.app.model.*;
 
 @Repository
+
 public interface OperacaoRepository extends JpaRepository <Operacao, Long> {
 	
 	
