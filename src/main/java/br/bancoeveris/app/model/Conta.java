@@ -8,13 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 @Entity
-public class Conta extends BaseResponse {
+public class Conta {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	// definir a hash como identificador unico
 	@Column(unique = true)
 	private String hash;
 	private String nome;

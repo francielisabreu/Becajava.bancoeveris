@@ -1,10 +1,20 @@
-package br.bancoeveris.app.spec;
+package br.bancoeveris.app.response;
 
-public class OperacaoSpec {
+import br.bancoeveris.app.model.BaseResponse;
 
+public class OperacaoResponse extends BaseResponse {
+	private Long id;
 	private Double valor;
 	private String tipo;
 	private String hash;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public Double getValor() {
 		return valor;
